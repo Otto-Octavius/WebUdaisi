@@ -18,7 +18,7 @@ def st_ui():
             df = pd.DataFrame(data, columns=['lat', 'lon'])
             st.map(df)
             st.markdown(
-                "<h4 style='text-align: center; color: white;'> Incorrect location? Give it a retry with more info </h4>",
+                "<h4 style='text-align: center; color: black;'> Incorrect location? Give it a retry with more info </h4>",
                 unsafe_allow_html=True)
 
 if __name__ == '__main__':
