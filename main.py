@@ -2,16 +2,18 @@ import streamlit as st
 import pandas as pd
 from geopy.geocoders import Nominatim
 
-locator = Nominatim(user_agent="myGeocoder")
-
+def geocoder(string):
+    locator = Nominatim(user_agent="myGeocoder")
+    return locator.geocode(string)
+    
 def st_ui():
     st.title("The Perfect Address 🌍")
-    l = st.text_input("Enter your location")
-    location = locator.geocode(l)
+    l = st.text_input("Enter a building or location")
+    location = geocoder(l)
     b = st.button('Get Postal Address')
     if b:
         if not location:
-            st.text('Add more Info (For example: City,District)')
+            st.text('Add more Info (For example: Road, City, District)')
         else:
             st.subheader(location.address)
             data = [[location.latitude, location.longitude]]
