@@ -5,6 +5,14 @@ from geopy.geocoders import Nominatim
 def geocoder(string):
     locator = Nominatim(user_agent="myGeocoder")
     return locator.geocode(string)
+
+def geocoder_test(string):
+    locator = Nominatim(user_agent="myGeocoder")
+    location = locator.geocode(string)
+    if not location:
+        return 'Add more Info (For example: Road, City, District)'
+    else:
+        return location.address
     
 def st_ui():
     st.title("The Perfect Address 🌍")
